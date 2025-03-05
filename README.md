@@ -39,6 +39,7 @@ This does not work for us. To get the project to build, we need to do the follow
     mvn install:install-file -Dfile="~\Downloads\RedstoneFlux-1.12-2.1.0.6-universal.jar" -DgroupId=cofh -DartifactId=RedstoneFlux -Dclassifier=universal -Dversion=1.12-2.1.0.6_mapped_snapshot_20171003-1.12 -Dpackaging=jar
 
 
+This is a change to show how changes work.
 
 
 #### Discords:
