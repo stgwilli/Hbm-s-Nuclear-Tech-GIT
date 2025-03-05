@@ -26,6 +26,20 @@ Press enter.
 
 Now just wait for the build to finish and the new Jar file will be in `Hbm-s-Nuclear-Tech-GIT\build\libs`.
 
+This does not work for us. To get the project to build, we need to do the following:
+
+1. Install Maven - "~\Downloads\apache-maven-3.9.9-bin.zip"
+2. Download Galacticraft Mod and install to local maven repository
+    mvn install:install-file -Dfile="~\Downloads\Galacticraft-1.12.2-4.0.2.283.jar"  -DgroupId=dev.galacticraft -DartifactId=galacticraft-legacy -Dversion=4.0.2.283_mapped_snapshot_20171003-1.12 -Dpackaging=jar
+3. Download and install Baubles to local maven repository
+    mvn install:install-file -Dfile="~\Downloads\Baubles-1.12-1.5.2.jar" -DgroupId=com.azanor -DartifactId=Baubles -Dversion=1.12-1.5.2_mapped_snapshot_20171003-1.12 -Dpackaging=jar
+4. Download and install Jei to local maven repository
+    mvn install:install-file -Dfile="~\Downloads\jei_1.12.2-4.16.1.302.jar" -DgroupId=mezz.jei -DartifactId=jei_1.12.2 -Dclassifier=api -Dversion=4.16.1.302_mapped_snapshot_20171003-1.12 -Dpackaging=jar
+5. Download and install RedstoneFlux to local maven repository
+    mvn install:install-file -Dfile="~\Downloads\RedstoneFlux-1.12-2.1.0.6-universal.jar" -DgroupId=cofh -DartifactId=RedstoneFlux -Dclassifier=universal -Dversion=1.12-2.1.0.6_mapped_snapshot_20171003-1.12 -Dpackaging=jar
+
+
+
 
 #### Discords:
 

@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        mavenLocal()
         maven { url = "https://maven.minecraftforge.net/" }
         maven { url = "https://files.minecraftforge.net/maven" }
         mavenCentral()
@@ -72,6 +73,7 @@ minecraft {
 }
 
 repositories {
+    mavenLocal()
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
@@ -86,14 +88,14 @@ repositories {
         name = "jared maven"
         url = "http://maven.blamejared.com/"
     }
-    maven { //GC
-        name = "galacticraft"
-        url = "https://maven.galacticraft.net/repository/legacy/"
-    }
-    maven { //  baubles
-        name = "mcmoddev"
-        url = "https://maven.mcmoddev.com"
-    }
+    // maven { //GC
+    //     name = "galacticraft"
+    //     url = "https://maven.galacticraft.net/repository/legacy/"
+    // }
+    // maven { //  baubles
+    //     name = "mcmoddev"
+    //     url = "https://maven.mcmoddev.com"
+    // }
     maven {
         name = 'CoFH Maven'
         url = 'https://maven.covers1624.net'
