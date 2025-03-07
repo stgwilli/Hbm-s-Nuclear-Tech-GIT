@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TileEntityCoreInjector extends TileEntityMachineBase implements ITickable, IFluidHandler, ITankPacketAcceptor {
 
 	public FluidTank[] tanks;
-	public static final int range = 15;
+	public static final int range = 200;
 	public int beam;
 	
 	public TileEntityCoreInjector() {
