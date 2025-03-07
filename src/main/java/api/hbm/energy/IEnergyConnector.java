@@ -1,15 +1,11 @@
 package api.hbm.energy;
 
-import com.hbm.packet.AuxParticlePacketNT;
-import com.hbm.packet.PacketDispatcher;
 import com.hbm.render.amlfrom1710.Vec3;
 import com.hbm.lib.ForgeDirection;
 
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
  * For anything that connects to power and can be transferred power to, the bottom-level interface.
@@ -61,6 +57,7 @@ public interface IEnergyConnector extends ILoadedTile {
 	public default void trySubscribe(World world, BlockPos pos, ForgeDirection dir) {
 
 		TileEntity te = world.getTileEntity(pos);
+		@SuppressWarnings("unused")
 		boolean red = false;
 		
 		if(te instanceof IEnergyConductor) {

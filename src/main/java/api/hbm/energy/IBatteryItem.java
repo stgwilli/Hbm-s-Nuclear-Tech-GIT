@@ -29,12 +29,17 @@ public interface IBatteryItem {
 		if(stack != null && stack.getItem() instanceof IBatteryItem) {
 			String keyName = getChargeTagName(stack);
 			ItemStack stackOut = stack.copy();
-			NBTTagCompound tag;
+
+			NBTTagCompound tag = stack.hasTagCompound() ? stack.getTagCompound() : new NBTTagCompound();
 			if(stack.hasTagCompound())
 				tag = stack.getTagCompound();
 			else
 				tag = new NBTTagCompound();
-			tag.setLong(keyName, 0);
+			
+			if (tag != null) {
+				tag.setLong(keyName, 0);
+			}
+
 			stackOut.setTagCompound(tag);
 			return stackOut.copy();
 		}

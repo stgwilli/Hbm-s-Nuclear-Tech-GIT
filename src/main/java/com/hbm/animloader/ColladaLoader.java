@@ -327,16 +327,18 @@ public class ColladaLoader {
 	
 	private static Animation parseAnim(Element root, int length){
 		Element anim_section = (Element)root.getElementsByTagName("library_animations").item(0);
-		Animation anim = new Animation();
+		Animation anim = Animation.EMPTY;
 		anim.length = length;
 		for(Element e : getChildElements(anim_section)){
 			if("animation".equals(e.getNodeName())){
 				String name = e.getAttribute("name");
-				Transform[] t = null;
+
+				Transform[] t = new Transform[0];
 				List<Element> elements2 = getChildElements(e);
 				if(elements2.isEmpty()){
 					continue;
 				}
+
 				for(Element e2 : elements2){
 					if(e2.getAttribute("id").endsWith("transform")){
 						t = parseTransforms(e2);
@@ -344,6 +346,7 @@ public class ColladaLoader {
 						setViewportHiddenKeyframes(t, e2);
 					}
 				}
+
 				anim.objectTransforms.put(name, t);
 				anim.numKeyFrames = t.length;
 			}
@@ -360,7 +363,7 @@ public class ColladaLoader {
 		}
 		System.out.println("Failed to parse transforms! This will not work!");
 		System.out.println("Node name: " + root.getTagName());
-		return null;
+		return new Transform[0];
 	}
 	
 	private static void setViewportHiddenKeyframes(Transform[] t, Element root){

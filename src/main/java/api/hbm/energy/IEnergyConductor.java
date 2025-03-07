@@ -93,7 +93,7 @@ public interface IEnergyConductor extends IEnergyConnector {
 	 */
 	public default List<BlockPos> getConnectionPoints() {
 
-		List<BlockPos> pos = new ArrayList();
+		List<BlockPos> pos = new ArrayList<>();
 		TileEntity tile = (TileEntity) this;
 		
 		for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
@@ -136,6 +136,6 @@ public interface IEnergyConductor extends IEnergyConnector {
 	 * @return
 	 */
 	public default List<Integer> getProxies() {
-		return new ArrayList();
+		return new ArrayList<>();
 	}
 }

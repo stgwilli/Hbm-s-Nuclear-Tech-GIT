@@ -7,8 +7,6 @@ import com.hbm.items.ModItems;
 import com.hbm.forgefluid.ModForgeFluids;
 import com.hbm.inventory.RecipesCommon.AStack;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
-import com.hbm.inventory.ChemplantRecipes;
-
 import net.minecraft.init.Items;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -19,10 +17,10 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class MixerRecipes {
 
-	public static HashMap<Fluid, FluidStack[]> recipesFluidInputs = new HashMap();
-	public static HashMap<Fluid, Integer> recipesFluidOutputAmount = new HashMap();
-	public static LinkedHashMap<Fluid, Integer> recipesDurations = new LinkedHashMap();
-	public static HashMap<Fluid, AStack> recipesItemInputs = new HashMap();
+	public static HashMap<Fluid, FluidStack[]> recipesFluidInputs = new HashMap<>();
+	public static HashMap<Fluid, Integer> recipesFluidOutputAmount = new HashMap<>();
+	public static LinkedHashMap<Fluid, Integer> recipesDurations = new LinkedHashMap<>();
+	public static HashMap<Fluid, AStack> recipesItemInputs = new HashMap<>();
 	
 	public static void copyChemplantRecipes() {
 		for (int i: ChemplantRecipes.recipeNames.keySet()){

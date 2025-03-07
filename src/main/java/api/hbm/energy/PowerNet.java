@@ -17,9 +17,9 @@ import net.minecraft.tileentity.TileEntity;
 public class PowerNet implements IPowerNet {
 	
 	private boolean valid = true;
-	private HashMap<Integer, IEnergyConductor> links = new HashMap();
-	private HashMap<Integer, Integer> proxies = new HashMap();
-	private List<IEnergyConnector> subscribers = new ArrayList();
+	private HashMap<Integer, IEnergyConductor> links = new HashMap<>();
+	private HashMap<Integer, Integer> proxies = new HashMap<>();
+	private List<IEnergyConnector> subscribers = new ArrayList<>();
 
 	public static List<PowerNet> trackingInstances = null;
 	protected long totalTransfer = 0;
@@ -91,13 +91,13 @@ public class PowerNet implements IPowerNet {
 
 	@Override
 	public List<IEnergyConductor> getLinks() {
-		List<IEnergyConductor> linkList = new ArrayList();
+		List<IEnergyConductor> linkList = new ArrayList<>();
 		linkList.addAll(this.links.values());
 		return linkList;
 	}
 
 	public HashMap<Integer, Integer> getProxies() {
-		HashMap<Integer, Integer> proxyCopy = new HashMap(proxies);
+		HashMap<Integer, Integer> proxyCopy = new HashMap<>(proxies);
 		return proxyCopy;
 	}
 
@@ -133,12 +133,12 @@ public class PowerNet implements IPowerNet {
 	@Override
 	public long transferPower(long power) {
 		
-		List<PowerNet> cache = new ArrayList();
+		List<PowerNet> cache = new ArrayList<>();
 		if(trackingInstances != null && !trackingInstances.isEmpty()) {
 			cache.addAll(trackingInstances);
 		}
 
-		trackingInstances = new ArrayList();
+		trackingInstances = new ArrayList<>();
 		trackingInstances.add(this);
 		long result = fairTransfer(this.subscribers, power);
 		trackingInstances.addAll(cache);
@@ -171,7 +171,7 @@ public class PowerNet implements IPowerNet {
 		
 		for(ConnectionPriority p : priorities) {
 			
-			List<IEnergyConnector> subList = new ArrayList();
+			List<IEnergyConnector> subList = new ArrayList<>();
 			subscribers.forEach(x -> {
 				if(shouldSend(senderPrio, p, x)) {
 					subList.add(x);
@@ -181,7 +181,7 @@ public class PowerNet implements IPowerNet {
 			if(subList.isEmpty())
 				continue;
 			
-			List<Long> weight = new ArrayList();
+			List<Long> weight = new ArrayList<>();
 			long totalReq = 0;
 			
 			for(IEnergyConnector con : subList) {
@@ -242,7 +242,7 @@ public class PowerNet implements IPowerNet {
 		
 		for(ConnectionPriority p : priorities) {
 			
-			List<IEnergyConnector> subList = new ArrayList();
+			List<IEnergyConnector> subList = new ArrayList<>();
 			subscribers.forEach(x -> {
 				if(x.getPriority() == p) {
 					subList.add(x);
@@ -252,7 +252,7 @@ public class PowerNet implements IPowerNet {
 			if(subList.isEmpty())
 				continue;
 			
-			List<Long> weight = new ArrayList();
+			List<Long> weight = new ArrayList<>();
 			long totalReq = 0;
 			
 			for(IEnergyConnector con : subList) {
@@ -306,8 +306,8 @@ public class PowerNet implements IPowerNet {
 			return;
 		}
 
-		HashMap<Integer, IEnergyConductor> copy = new HashMap(links);
-		HashMap<Integer, Integer> proxyCopy = new HashMap(proxies);
+		HashMap<Integer, IEnergyConductor> copy = new HashMap<>(links);
+		HashMap<Integer, Integer> proxyCopy = new HashMap<>(proxies);
 		
 		for(IEnergyConductor link : copy.values()) {
 			this.leaveLink(link);

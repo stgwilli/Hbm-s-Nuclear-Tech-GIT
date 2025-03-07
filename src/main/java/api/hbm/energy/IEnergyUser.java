@@ -1,14 +1,10 @@
 package api.hbm.energy;
 
-import com.hbm.packet.AuxParticlePacketNT;
-import com.hbm.packet.PacketDispatcher;
 import com.hbm.lib.ForgeDirection;
 
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 /**
  * For machines and things that have an energy buffer and are affected by EMPs
@@ -54,6 +50,7 @@ public interface IEnergyUser extends IEnergyConnector {
 		
 		TileEntity te = world.getTileEntity(pos);
 		boolean wasSubscribed = false;
+		@SuppressWarnings("unused")
 		boolean red = false;
 		
 		// first we make sure we're not subscribed to the network that we'll be supplying
