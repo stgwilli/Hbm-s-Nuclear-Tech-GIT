@@ -28,11 +28,7 @@ public class TileEntityCoreStabilizer extends TileEntityMachineBase implements I
 	public int beam;
 	public boolean isOn;
 	
-<<<<<<< Updated upstream
 	public static final int range = 200;
-=======
-	public static final int range = 30;
->>>>>>> Stashed changes
 	
 	public TileEntityCoreStabilizer() {
 		super(1);
