@@ -2,6 +2,8 @@ package com.hbm.blocks.bomb;
 
 import java.util.Random;
 
+import javax.annotation.Nonnull;
+
 import com.hbm.blocks.ModBlocks;
 import com.hbm.items.ModItems;
 
@@ -11,8 +13,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 
 public class BlockCloudResidue extends Block {
 
+	@SuppressWarnings("null")
 	public BlockCloudResidue(Material materialIn, String s) {
 		super(materialIn);
 		this.setUnlocalizedName(s);
@@ -46,12 +47,12 @@ public class BlockCloudResidue extends Block {
 	}
 
 	@Override
-	public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
+	public AxisAlignedBB getSelectedBoundingBox(@Nonnull IBlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos) {
 		return new AxisAlignedBB(pos, pos);
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+	public AxisAlignedBB getCollisionBoundingBox(@Nonnull IBlockState blockState, @Nonnull IBlockAccess worldIn, @Nonnull BlockPos pos) {
 		return NULL_AABB;
 	}
 
@@ -61,28 +62,28 @@ public class BlockCloudResidue extends Block {
 	}
 
 	@Override
-	public boolean isNormalCube(IBlockState state) {
+	public boolean isNormalCube(@Nonnull IBlockState state) {
 		return false;
 	}
 	
 	@Override
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+	public boolean canPlaceBlockAt(@Nonnull World worldIn, @Nonnull BlockPos pos) {
 		return hasPosNeightbour(worldIn, pos);
 	}
 
 	@Override
-	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos fromPos) {
+	public void neighborChanged(@Nonnull IBlockState state, @Nonnull World world, @Nonnull BlockPos pos, @Nonnull Block blockIn, @Nonnull BlockPos fromPos) {
 		if (!BlockCloudResidue.hasPosNeightbour(world, pos) && !world.isRemote) {
 			world.setBlockToAir(pos);
 		}
 	}
 
 	@Override
-	public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+	public MapColor getMapColor(@Nonnull IBlockState state, @Nonnull IBlockAccess worldIn, @Nonnull BlockPos pos) {
 		return MapColor.RED;
 	}
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(@Nonnull IBlockState state, @Nonnull Random rand, int fortune) {
 		if(rand.nextInt(25) == 1){
 			return ModItems.powder_cloud;
 		}

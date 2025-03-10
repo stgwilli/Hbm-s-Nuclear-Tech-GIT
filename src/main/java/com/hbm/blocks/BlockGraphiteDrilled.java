@@ -1,5 +1,7 @@
 package com.hbm.blocks;
 
+import javax.annotation.Nonnull;
+
 import com.hbm.blocks.machine.pile.BlockGraphiteDrilledBase;
 import com.hbm.items.ModItems;
 import com.hbm.lib.HBMSoundHandler;
@@ -21,7 +23,7 @@ public class BlockGraphiteDrilled extends BlockGraphiteDrilledBase {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
+	public boolean onBlockActivated(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull EnumHand hand, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ){
 		if(!player.getHeldItem(hand).isEmpty()) {
 			
 			EnumFacing.Axis axis = state.getValue(AXIS);

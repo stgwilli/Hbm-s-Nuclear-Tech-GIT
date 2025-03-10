@@ -1,6 +1,6 @@
 package com.hbm.blocks.bomb;
 
-import java.util.Random;
+import javax.annotation.Nonnull;
 
 import com.hbm.blocks.ModBlocks;
 import com.hbm.potion.HbmPotion;
@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 
 public class Balefire extends BlockFire {
 
+	@SuppressWarnings("null")
 	public Balefire(String s) {
 		super();
 		this.setUnlocalizedName(s);
@@ -26,7 +27,7 @@ public class Balefire extends BlockFire {
 	}
 
 	@Override 
-	protected boolean canDie(World worldIn, BlockPos pos){
+	protected boolean canDie(@Nonnull World worldIn, @Nonnull BlockPos pos){
 		Block b = worldIn.getBlockState(pos.down()).getBlock();
 
 		return (b != ModBlocks.baleonitite_slaked && 
@@ -37,8 +38,9 @@ public class Balefire extends BlockFire {
 			b != ModBlocks.baleonitite_core);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override 
-	public int getFlammability(Block b){
+	public int getFlammability(@Nonnull Block b){
 		if(b != ModBlocks.baleonitite_slaked && 
 			b != ModBlocks.baleonitite_1 && 
 			b != ModBlocks.baleonitite_2 && 
@@ -47,11 +49,13 @@ public class Balefire extends BlockFire {
 			b != ModBlocks.baleonitite_core){
 			return 20000;
 		}
+
 		return super.getEncouragement(b);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override 
-	public int getEncouragement(Block b){
+	public int getEncouragement(@Nonnull Block b){
 		if(b != ModBlocks.baleonitite_slaked && 
 			b != ModBlocks.baleonitite_1 && 
 			b != ModBlocks.baleonitite_2 && 
@@ -64,7 +68,7 @@ public class Balefire extends BlockFire {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
+	public void onEntityCollidedWithBlock(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Entity entityIn) {
 		entityIn.setFire(10);
 
 		if (entityIn instanceof EntityLivingBase)

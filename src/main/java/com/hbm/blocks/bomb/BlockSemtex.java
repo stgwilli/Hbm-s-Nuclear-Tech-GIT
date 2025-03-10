@@ -1,5 +1,7 @@
 package com.hbm.blocks.bomb;
 
+import javax.annotation.Nonnull;
+
 import com.hbm.blocks.ModBlocks;
 import com.hbm.explosion.ExplosionLarge;
 import com.hbm.explosion.ExplosionNT;
@@ -35,23 +37,23 @@ public class BlockSemtex extends Block implements IBomb {
 	}
 	
 	@Override
-	public Block setSoundType(SoundType sound){
+	public Block setSoundType(@Nonnull SoundType sound){
 		return super.setSoundType(sound);
 	}
 
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack){
+	public void onBlockPlacedBy(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull EntityLivingBase placer, @Nonnull ItemStack stack){
 		worldIn.setBlockState(pos, state.withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer).getOpposite()), 2);
 	}
 	
 
 	@Override
-	public void onBlockDestroyedByExplosion(World worldIn, BlockPos pos, Explosion explosionIn){
+	public void onBlockDestroyedByExplosion(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull Explosion explosionIn){
 		this.explode(worldIn, pos);
 	}
 	
 	@Override
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos){
+	public void neighborChanged(@Nonnull IBlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull Block blockIn, @Nonnull BlockPos fromPos){
 		if(worldIn.isBlockIndirectlyGettingPowered(pos) > 0){
 			this.explode(worldIn, pos);
 		}
@@ -71,7 +73,7 @@ public class BlockSemtex extends Block implements IBomb {
 	}
 	
 	@Override
-	public int getMetaFromState(IBlockState state) {
+	public int getMetaFromState(@Nonnull IBlockState state) {
 		return ((EnumFacing)state.getValue(FACING)).getIndex();
 	}
 	
@@ -82,12 +84,12 @@ public class BlockSemtex extends Block implements IBomb {
 	}
 	
 	@Override
-	public IBlockState withRotation(IBlockState state, Rotation rot) {
+	public IBlockState withRotation(@Nonnull IBlockState state, @Nonnull Rotation rot) {
 		return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
 	}
 	
 	@Override
-	public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
+	public IBlockState withMirror(@Nonnull IBlockState state, @Nonnull Mirror mirrorIn)
 	{
 	   return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
 	}
